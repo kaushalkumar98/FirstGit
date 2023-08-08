@@ -1,0 +1,40 @@
+function createPost() {
+    return new Promise( () =>{
+        //update last activity time
+    })
+}
+
+function seenSomeoneMessage(){
+    return new Promise( () =>{
+        ////update last activity time
+    })
+}
+
+function updateprofilePhoto(){
+    return new Promise( () =>{
+        ////update last activity time
+    })
+}
+
+const user = {
+    username: 'Kaushal',
+    lastactivitytime: '08 August'
+}
+
+function updatelastactivitytime() {
+    return new Promise((resolve, reject) = {
+        setTimeout(() => {
+            user.lastactivitytime = newDate().getTime();
+            resolve(user.lastactivitytime)
+        }, 1000)
+    })
+}
+
+function userupdatespost(){
+    Promise.all([createPost, updatelastactivitytime])
+    .then(([createPostresolves, updatelastactivitytimeresolves]) => {
+
+    })
+    .catch(err => console.log(err))
+}
+
