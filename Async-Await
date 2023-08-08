@@ -1,0 +1,49 @@
+//Converting the createPost , deletePost written previously into async await completely
+
+let lastActivity;
+const posts = [];
+
+async function posting() {
+  const updateLastUserActivityTime = () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        lastActivity = new Date();
+        resolve();
+      }, 1000);
+    });
+  };
+
+  const createPost = () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        posts.push({ name: "newPost" });
+        resolve();
+      }, 1000);
+    });
+  };
+
+  const deletePost = () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        posts.pop();
+        resolve();
+      }, 1000);
+    });
+  };
+
+  const showLastActivity = () => {
+    return Promise.resolve(lastActivity);
+  };
+
+  await Promise.all([updateLastUserActivityTime(), createPost()]);
+
+  console.log("created post at :");
+  console.log(await showLastActivity());
+
+  await Promise.all([updateLastUserActivityTime(), deletePost()]);
+
+  console.log("deleted post at :");
+  console.log(await showLastActivity());
+}
+
+posting();
